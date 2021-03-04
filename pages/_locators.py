@@ -19,19 +19,19 @@ class LoginPageLocators:
 class DashboardPageLocators:
     DASHBOARD_INTRO = (By.CSS_SELECTOR,'.intro')
     DASHBOARD_CONTENT = (By.CSS_SELECTOR, '.calendar-box-section')
-    # FIRST_CALENDAR = (By.CSS_SELECTOR,'.calendar-box-content:first-of-type')
-    # REMOVE_FIRST_CALENDAR = (By.CSS_SELECTOR, '.calendar-box-content:first-of-type .dashboard-remove-calendar')
+    CALENDAR_BY_TITLE = (By.XPATH, './/h4[contains(text(), title)]')
+    REMOVE_CALENDAR_BY_TITLE = (By.XPATH, './/h4[contains(text(), title)]/ancestor::div[contains(@class,"calendar-box-content")]//following::*[contains(text(), "Remove")]')
     CREATE_CALENDAR_DIV = (By.CSS_SELECTOR, '.create-calendar-box')
     ADD_CALENDAR_BTN = (By.CSS_SELECTOR, '.add-calendar-btn')
 
 
 class CalendarCreatePagesLocators:
     # includes calendar/created?key
-    CREATE_TITLE = (By.CSS_SELECTOR, '.user__login - page - content - right > h1')
+    CREATE_FORM = (By.CSS_SELECTOR,'.form')
+    CREATE_TITLE = (By.CSS_SELECTOR, '.user__login-page-content-right > h1')
     NAME_INPUT = (By.CSS_SELECTOR, '#calendar-name')
-    TERMS_CHECKBOX = (By.CSS_SELECTOR, '#terms-and-conditions-chx')
+    TERMS_CHECKBOX = (By.CSS_SELECTOR, '[for="terms-and-conditions-chx"]')
     CREATE_BTN = (By.CSS_SELECTOR, '#calendar-create')
     SUCCESS_TITLE = (By.CSS_SELECTOR, '.user__login-page-content-right > h1')
     OPEN_CALENDAR_BTN = (By.CSS_SELECTOR, '#btn__settings-ok')
     DASHBOARD_BTN = (By.CSS_SELECTOR, '.user__login-page-content-right p:last-of-type a')
-
