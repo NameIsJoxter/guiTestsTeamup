@@ -16,7 +16,6 @@ class DashboardPage(BasePage):
     def calendar_widget_is_visible(self, title):
         assert self.is_element_present(*DashboardPageLocators.CALENDAR_BY_TITLE)
 
-    # NEEDHELP
-    # def remove_calendar(self, title):
-    #     self.move_pointer_to_element(*DashboardPageLocators.CALENDAR_BY_TITLE)
-    #     self.driver.find_element(*DashboardPageLocators.REMOVE_CALENDAR_BY_TITLE).click()
+    def go_to_remove_calendar_page(self, title):
+        self.move_pointer_to_element(*DashboardPageLocators.CALENDAR_BY_TITLE)
+        self.driver.find_element(*DashboardPageLocators.REMOVE_CALENDAR_BY_TITLE).click()

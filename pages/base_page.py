@@ -1,5 +1,8 @@
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver import ActionChains as actions
+from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from ._locators import CalendarBaseLocators
 
 
@@ -18,12 +21,20 @@ class BasePage:
             return False
         return True
 
-    # NEEDHELP
-    def move_pointer_to_element(self, element):
-        try: actions.move_to_element(element)
+    def move_pointer_to_element(self, how, what):
+        element = self.driver.find_element(how, what)
+        try:
+            ActionChains(self.driver).move_to_element(element)
         except TimeoutException:
             return False
         return True
+
+    def is_not_element_present(self, how, what, timeout=2):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
 
     def should_be_autorized_user(self):
         assert self.is_element_present(*CalendarBaseLocators.USER_ICON), \

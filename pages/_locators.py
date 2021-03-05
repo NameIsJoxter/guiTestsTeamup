@@ -35,3 +35,9 @@ class CalendarCreatePagesLocators:
     SUCCESS_TITLE = (By.CSS_SELECTOR, '.user__login-page-content-right > h1')
     OPEN_CALENDAR_BTN = (By.CSS_SELECTOR, '#btn__settings-ok')
     DASHBOARD_BTN = (By.CSS_SELECTOR, '.user__login-page-content-right p:last-of-type a')
+
+
+class CalendarRemovePagesLocators:
+    PASSWORD_INPUT = (By.CSS_SELECTOR,'#form_password')
+    KEEP_BTN = (By.CSS_SELECTOR,'.btn__settings-ok')
+    REMOVE_BTN = (By.CSS_SELECTOR, '.btn__settings-remove')
