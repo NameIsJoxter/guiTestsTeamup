@@ -46,6 +46,7 @@ class CalendarRemovePageLocators:
 class CalendarPageLocators:
     CALENDAR_TOOLBAR = (By.CSS_SELECTOR, '.calendar-toolbar')
     CALENDAR_TOOLBAR_LIST_BTN = (By.XPATH, './/li[contains(text(), "List")]')
+
     CALENDAR_ADD_EVENT_BTN = (By.CSS_SELECTOR, '.add-event-btn')
     MODAL_EVENTEDITOR = (By.CSS_SELECTOR, '.eventeditor')
 
