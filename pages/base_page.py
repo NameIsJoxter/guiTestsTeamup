@@ -7,6 +7,7 @@ from ._locators import CalendarBaseLocators
 
 
 class BasePage:
+
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
@@ -21,10 +22,10 @@ class BasePage:
             return False
         return True
 
-    def move_pointer_to_element(self, how, what):
+    def move_to_element(self, how, what):
         element = self.driver.find_element(how, what)
         try:
-            ActionChains(self.driver).move_to_element(element)
+            ActionChains(self.driver).move_to_element_with_offset(element, 0, 0).perform()
         except TimeoutException:
             return False
         return True

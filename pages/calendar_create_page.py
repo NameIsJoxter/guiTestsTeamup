@@ -1,9 +1,8 @@
-import time
 from .base_page import BasePage
-from ._locators import CalendarBaseLocators, CalendarCreatePagesLocators
+from ._locators import CalendarCreatePagesLocators
 
 
-class CalendarsPage(BasePage):
+class CalendarCreatePage(BasePage):
     link = 'https://teamup.com/calendars'
 
     def should_be_create_calendar_page(self):

@@ -12,16 +12,16 @@ class CalendarBaseLocators:
 class LoginPageLocators:
     EMAIL_INPUT = (By.CSS_SELECTOR, '#username')
     PASSWORD_INPUT = (By.CSS_SELECTOR, '#password')
-    # REMEMBER_ME_CHECKBOX
     LOGIN_BTN = (By.CSS_SELECTOR, '#_submit')
 
 
 class DashboardPageLocators:
     DASHBOARD_INTRO = (By.CSS_SELECTOR,'.intro')
     DASHBOARD_CONTENT = (By.CSS_SELECTOR, '.calendar-box-section')
+    FIRST_CALENDAR = (By.CSS_SELECTOR, '.calendar-box-content')
     CALENDAR_BY_TITLE = (By.XPATH, './/h4[contains(text(), title)]')
     REMOVE_CALENDAR_BY_TITLE = (By.XPATH, './/h4[contains(text(), title)]/ancestor::div[contains(@class,"calendar-box-content")]//following::*[contains(text(), "Remove")]')
-    CREATE_CALENDAR_DIV = (By.CSS_SELECTOR, '.create-calendar-box')
+    CREATE_CALENDAR = (By.CSS_SELECTOR, '.create-calendar-box')
     ADD_CALENDAR_BTN = (By.CSS_SELECTOR, '.add-calendar-btn')
 
 
@@ -37,7 +37,23 @@ class CalendarCreatePagesLocators:
     DASHBOARD_BTN = (By.CSS_SELECTOR, '.user__login-page-content-right p:last-of-type a')
 
 
-class CalendarRemovePagesLocators:
+class CalendarRemovePageLocators:
     PASSWORD_INPUT = (By.CSS_SELECTOR,'#form_password')
     KEEP_BTN = (By.CSS_SELECTOR,'.btn__settings-ok')
     REMOVE_BTN = (By.CSS_SELECTOR, '.btn__settings-remove')
+
+
+class CalendarPageLocators:
+    CALENDAR_TOOLBAR = (By.CSS_SELECTOR, '.calendar-toolbar')
+    CALENDAR_TOOLBAR_LIST_BTN = (By.XPATH, './/li[contains(text(), "List")]')
+    CALENDAR_ADD_EVENT_BTN = (By.CSS_SELECTOR, '.add-event-btn')
+    MODAL_EVENTEDITOR = (By.CSS_SELECTOR, '.eventeditor')
+
+    CALENDAR_CONTENT = (By.CSS_SELECTOR, '.calendar-body-content')
+
+    SIDEBAR_DATEPICKER = (By.CSS_SELECTOR, '.sidebar-datepicker')
+    SIDEBAR_CALENDAR_LIST = (By.CSS_SELECTOR, '.calendar-list-widget')
+    SIDEBAR_FILTER = (By.CSS_SELECTOR, '.filter-widget')
+    SIDEBAR_ABOUT = (By.CSS_SELECTOR, '.about-widget')
+
+

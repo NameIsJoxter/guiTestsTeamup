@@ -1,3 +1,5 @@
+import time
+
 from .base_page import BasePage
 from ._locators import CalendarBaseLocators, DashboardPageLocators
 
@@ -10,12 +12,15 @@ class DashboardPage(BasePage):
         assert self.is_element_present(*CalendarBaseLocators.HEADER), 'There\'s no header at the dashboard page'
         assert self.is_element_present(*CalendarBaseLocators.FOOTER), 'There\'s no footer input at the dashboard page'
 
+    def go_to_calendar_page(self):
+        self.driver.find_element(*DashboardPageLocators.FIRST_CALENDAR).click()
+
     def go_to_create_calendar_page(self):
-        self.driver.find_element(*DashboardPageLocators.CREATE_CALENDAR_DIV).click()
+        self.driver.find_element(*DashboardPageLocators.CREATE_CALENDAR).click()
 
     def calendar_widget_is_visible(self, title):
         assert self.is_element_present(*DashboardPageLocators.CALENDAR_BY_TITLE)
 
     def go_to_remove_calendar_page(self, title):
-        self.move_pointer_to_element(*DashboardPageLocators.CALENDAR_BY_TITLE)
+        self.move_to_element(*DashboardPageLocators.CALENDAR_BY_TITLE)
         self.driver.find_element(*DashboardPageLocators.REMOVE_CALENDAR_BY_TITLE).click()
