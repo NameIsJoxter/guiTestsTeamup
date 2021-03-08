@@ -1,5 +1,5 @@
 import pytest
-import time
+import time, datetime
 
 from pages.login_page import LoginPage
 from pages.calendar_page import CalendarPage
@@ -29,13 +29,18 @@ class TestUserCanCreateEvent:
         page.click_save_btn()
         page.should_be_success_toast()
 
-    @pytest.mark.lastone
+    @pytest.mark.needs_review
     def test_user_can_see_added_event(self, driver):
+        date = (datetime.datetime.now() + datetime.timedelta(1)).strftime("%Y-%m-%d")
+        title = datetime.datetime.now().strftime("%c")
         page = CalendarPage(driver, driver.current_url)
-        page.open_add_event_popup_by_link()
-        page.fill_event_title()
-        page.uncheck_all_day_checkbox()
-        page.fill_event_calendar()
-        page.click_save_btn()
+        # page.open_add_event_popup_by_link()
+        # page.fill_event_title(title)
+        # page.uncheck_all_day_checkbox()
+        # page.fill_event_calendar()
+        # page.click_save_btn()
+        page.go_to_week_view()
+        time.sleep(1)
+        page.find_event_at_the_week_view(date, title)
         time.sleep(5)
 

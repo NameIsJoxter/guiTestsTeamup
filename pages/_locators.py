@@ -46,11 +46,13 @@ class CalendarRemovePageLocators:
 class CalendarPageLocators:
     CALENDAR_TOOLBAR = (By.CSS_SELECTOR, '.calendar-toolbar')
     CALENDAR_TOOLBAR_LIST_BTN = (By.XPATH, './/li[contains(text(), "List")]')
+    CALENDAR_TOOLBAR_WEEK_BTN = (By.XPATH, './/li[text() = "Week"]')
     CALENDAR_ADD_EVENT_BTN = (By.CSS_SELECTOR, '.add-event-btn')
 
     CALENDAR_CONTENT = (By.CSS_SELECTOR, '.calendar-body-content')
-    CALENDAR_WEEK_TODAY_COLUMN = (By.CSS_SELECTOR, '.day-today')
-
+    CALENDAR_WEEK_VIEW = (By.CSS_SELECTOR, '.week-view')
+    # CALENDAR_WEEK_TODAY_COLUMN = (By.CSS_SELECTOR, '.day-today')
+    CALENDAR_WEEK_COLUMN_BY_DATE_EVENT_BY_TITLE = (By.XPATH, './/*[@class="columns"]//div[contains(@data-date, date)]//*[contains(@class, "event")]//*[@class="event-title" and text() = title] ')
 
     SIDEBAR_DATEPICKER = (By.CSS_SELECTOR, '.sidebar-datepicker')
     SIDEBAR_CALENDAR_LIST = (By.CSS_SELECTOR, '.calendar-list-widget')
@@ -60,7 +62,7 @@ class CalendarPageLocators:
     MODAL_EVENTEDITOR = (By.CSS_SELECTOR, '.eventeditor')
     MODAL_EVENTEDITOR_TITLE = (By.CSS_SELECTOR, '#title')
     MODAL_EVENTEDITOR_CALENDAR_PLACEHOLDER = (By.CSS_SELECTOR, '.Select-placeholder')
-    MODAL_EVENTEDITOR_CALENDAR_INPUT = (By.CSS_SELECTOR, '#react-select-3--value .Select-input input')
+    MODAL_EVENTEDITOR_CALENDAR_INPUT = (By.CSS_SELECTOR, '.calendarpicker .Select-input input')
     MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX = (By.CSS_SELECTOR, '#all_day')
     MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX_LABEL = (By.CSS_SELECTOR, '.all-day-label label')
     MODAL_EVENTEDITOR_SAVE_BTN = (By.CSS_SELECTOR, '.save-button [type=submit]')
