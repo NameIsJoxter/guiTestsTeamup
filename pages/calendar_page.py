@@ -31,7 +31,7 @@ class CalendarPage(BasePage):
             *CalendarPageLocators.CALENDAR_WEEK_VIEW), 'Can\'t switch to week view'
 
     def find_event_at_the_week_view(self, date, title):
-        assert self.is_element_present(*CalendarPageLocators.CALENDAR_WEEK_COLUMN_BY_DATE_EVENT_BY_TITLE), 'Event is not presented. Date: '+ date +": title: <" + title
+        assert self.is_element_present(*CalendarPageLocators.CALENDAR_WEEK_COLUMN_BY_DATE_EVENT_BY_TITLE), 'Event is not presented. Date: '+ date +": title: " + title
 
     def open_add_event_popup_by_btn(self):
         self.driver.find_element(*CalendarPageLocators.CALENDAR_ADD_EVENT_BTN).click()

@@ -6,6 +6,7 @@ from pages.calendar_create_page import CalendarCreatePage
 from pages.remove_calendar_page import RemoveCalendarPage
 
 
+@pytest.mark.needs_review
 class TestUserCanCreateCalendarFromDashboardPage:
     @pytest.fixture(scope='function', autouse=True)
     def test_setup(self, driver):
@@ -45,12 +46,11 @@ class TestUserCanDeleteCalendarFromDashboardPage:
         page = DashboardPage(driver, driver.current_url)
         page.should_be_autorized_user()
 
-    @pytest.mark.needs_review  # Почему ссылка remove активна сразу и везде, я не понима
     def test_user_can_go_to_delete_calendar_page(self, driver):
         title = 'brand new calendar'
-        # DashboardPage(driver, driver.current_url).go_to_create_calendar_page()
-        # CalendarsPage(driver, CalendarsPage.link).create_calendar(title)
-        # CalendarsPage(driver, driver.current_url).go_to_dashboard_page()
+        DashboardPage(driver, driver.current_url).go_to_create_calendar_page()
+        CalendarCreatePage(driver, CalendarCreatePage.link).create_calendar(title)
+        CalendarCreatePage(driver, driver.current_url).go_to_dashboard_page()
         page = DashboardPage(driver, driver.current_url)
         page.go_to_remove_calendar_page(title)
         page = RemoveCalendarPage(driver, driver.current_url)
