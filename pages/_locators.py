@@ -49,7 +49,8 @@ class CalendarPageLocators:
     CALENDAR_ADD_EVENT_BTN = (By.CSS_SELECTOR, '.add-event-btn')
 
     CALENDAR_CONTENT = (By.CSS_SELECTOR, '.calendar-body-content')
-    # CALENDAR_TODAY_DATE = (By.CSS_SELECTOR, '.day-today')
+    CALENDAR_WEEK_TODAY_COLUMN = (By.CSS_SELECTOR, '.day-today')
+
 
     SIDEBAR_DATEPICKER = (By.CSS_SELECTOR, '.sidebar-datepicker')
     SIDEBAR_CALENDAR_LIST = (By.CSS_SELECTOR, '.calendar-list-widget')
@@ -60,8 +61,8 @@ class CalendarPageLocators:
     MODAL_EVENTEDITOR_TITLE = (By.CSS_SELECTOR, '#title')
     MODAL_EVENTEDITOR_CALENDAR_PLACEHOLDER = (By.CSS_SELECTOR, '.Select-placeholder')
     MODAL_EVENTEDITOR_CALENDAR_INPUT = (By.CSS_SELECTOR, '#react-select-3--value .Select-input input')
-    MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX = (By.CSS_SELECTOR, '[type="checkbox"]')
-    MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX_LABEL = (By.CSS_SELECTOR, '[for="all_day"]')
+    MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX = (By.CSS_SELECTOR, '#all_day')
+    MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX_LABEL = (By.CSS_SELECTOR, '.all-day-label label')
     MODAL_EVENTEDITOR_SAVE_BTN = (By.CSS_SELECTOR, '.save-button [type=submit]')
     MODAL_EVENTEDITOR_TO_TIME = (By.CSS_SELECTOR, '.date-to-value .select-widget-input')
     SUCCESS_ADD_EVENT_TOAST = (By.CSS_SELECTOR, '.flash-message-enter-done')

@@ -1,4 +1,4 @@
-import time
+import time, datetime
 from selenium.webdriver.common.keys import Keys
 
 from .base_page import BasePage
@@ -30,19 +30,22 @@ class CalendarPage(BasePage):
         assert self.is_element_present(*CalendarPageLocators.MODAL_EVENTEDITOR), 'Modal event editor is not presented'
 
     def open_add_event_popup_by_link(self):
-        add_event_with_start_date_param = '/events/new?start_dt=' + self.today_plus_days(1)
+        add_event_with_start_date_param = '/events/new?start_dt=' + self.today_plus_days(1).strftime("%Y-%m-%d")
         self.driver.get(self.driver.current_url+add_event_with_start_date_param)
 
     def fill_event_title(self):
-        self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_TITLE).send_keys('title')
+        title = datetime.datetime.now().strftime("%c")
+        self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_TITLE).send_keys(title)
+        return title
 
     def uncheck_all_day_checkbox(self):
         checkbox = self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX).get_attribute(
             'value')
         if checkbox == '1':
-            self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX_LABEL).get_attribute(
-                'value')
-        assert checkbox == '1', 'Expected all day checkbox ' + checkbox + ' to be NOT checked, but it is'
+            self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX_LABEL).click()
+        checkbox = self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_ALL_DAY_CHECKBOX).get_attribute(
+            'value')
+        assert checkbox == '0', 'Expected all day checkbox ' + checkbox + ' to be NOT checked, but it is'
 
     def fill_event_calendar(self):
         self.driver.find_element(*CalendarPageLocators.MODAL_EVENTEDITOR_CALENDAR_PLACEHOLDER).click()

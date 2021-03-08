@@ -43,7 +43,7 @@ class BasePage:
 
     def today_plus_days(self, add_days):
         today = datetime.datetime.now()
-        sought_date = (today + datetime.timedelta(add_days)).strftime("%Y-%m-%d")
+        sought_date = today + datetime.timedelta(add_days)
         return sought_date
 
     def should_be_autorized_user(self):
