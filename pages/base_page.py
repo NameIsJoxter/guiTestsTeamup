@@ -1,3 +1,4 @@
+import datetime
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,7 +8,6 @@ from ._locators import CalendarBaseLocators
 
 
 class BasePage:
-
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
@@ -36,6 +36,15 @@ class BasePage:
         except TimeoutException:
             return True
         return False
+
+    # def todate_date(self):
+    #     today = datetime.datetime.now().strftime("%Y-%m-%d")
+    #     return today
+
+    def today_plus_days(self, add_days):
+        today = datetime.datetime.now()
+        sought_date = (today + datetime.timedelta(add_days)).strftime("%Y-%m-%d")
+        return sought_date
 
     def should_be_autorized_user(self):
         assert self.is_element_present(*CalendarBaseLocators.USER_ICON), \

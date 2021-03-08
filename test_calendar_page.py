@@ -18,10 +18,22 @@ class TestUserCanCreateEvent:
     def test_user_can_open_add_event_popup(self, driver):
         page = CalendarPage(driver, driver.current_url)
         page.go_to_list_view()
-        page.open_add_event_popup()
+        page.open_add_event_popup_by_btn()
 
-    @pytest.mark.lastone
     def test_user_can_add_event(self, driver):
         page = CalendarPage(driver, driver.current_url)
         page.go_to_list_view()
-        page.open_add_event_popup()
+        page.open_add_event_popup_by_btn()
+        page.fill_event_title()
+        page.fill_event_calendar()
+        page.click_save_btn()
+        page.should_be_success_toast()
+
+    @pytest.mark.lastone
+    def test_user_can_see_added_event(self, driver):
+        page = CalendarPage(driver, driver.current_url)
+        page.open_add_event_popup_by_link()
+        page.uncheck_all_day_checkbox()
+        page.fill_event_calendar()
+        page.click_save_btn()
+
