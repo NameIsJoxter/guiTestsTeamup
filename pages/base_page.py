@@ -15,9 +15,9 @@ class BasePage:
     def open(self):
         self.driver.get(self.url)
 
-    def is_element_present(self, how, what):
+    def is_element_present(self, how, what, timeout=3):
         try:
-            self.driver.find_element(how, what)
+            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
         return True
@@ -29,13 +29,6 @@ class BasePage:
         except TimeoutException:
             return False
         return True
-
-    def is_not_element_present(self, how, what, timeout=2):
-        try:
-            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((how, what)))
-        except TimeoutException:
-            return True
-        return False
 
     # def todate_date(self):
     #     today = datetime.datetime.now().strftime("%Y-%m-%d")

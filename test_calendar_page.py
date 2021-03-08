@@ -35,7 +35,7 @@ class TestUserCanCreateEvent:
         page.open_add_event_popup_by_link()
         page.fill_event_title()
         page.uncheck_all_day_checkbox()
-        # page.fill_event_calendar()
-        # page.click_save_btn()
+        page.fill_event_calendar()
+        page.click_save_btn()
         time.sleep(5)
 
