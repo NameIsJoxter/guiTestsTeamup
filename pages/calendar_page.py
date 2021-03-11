@@ -1,5 +1,6 @@
 import time, datetime
 from selenium.webdriver.common.keys import Keys
+from utils import smart_wait_by_xpath
 
 from .base_page import BasePage
 from ._locators import CalendarBaseLocators, CalendarPageLocators
@@ -31,7 +32,10 @@ class CalendarPage(BasePage):
             *CalendarPageLocators.CALENDAR_WEEK_VIEW), 'Can\'t switch to week view'
 
     def find_event_at_the_week_view(self, date, title):
-        assert self.is_element_present(*CalendarPageLocators.CALENDAR_WEEK_COLUMN_BY_DATE_EVENT_BY_TITLE), 'Event is not presented. Date: '+ date +": title: " + title
+        return self.is_element_present(*CalendarPageLocators.CALENDAR_WEEK_COLUMN_BY_DATE_EVENT_BY_TITLE)
+
+    def find_event_by_title(self, driver, title):
+        return smart_wait_by_xpath(driver, f"//span[normalize-space()='{title}']")
 
     def open_add_event_popup_by_btn(self):
         self.driver.find_element(*CalendarPageLocators.CALENDAR_ADD_EVENT_BTN).click()
@@ -64,3 +68,10 @@ class CalendarPage(BasePage):
     def should_be_success_toast(self):
         assert self.is_element_present(*CalendarPageLocators.SUCCESS_ADD_EVENT_TOAST), 'There\'s no success toast'
 
+    def create_calendar_event_with_data(self, title):
+        self.go_to_list_view()
+        self.open_add_event_popup_by_btn()
+        self.fill_event_title(title)
+        self.fill_event_calendar()
+        self.click_save_btn()
+        self.should_be_success_toast()
